@@ -48,6 +48,9 @@ struct ContentView: View {
         .alert(isPresented: $gameOver, content: {
             Alert(title: Text(winMessage))
         })
+        .onChange(of: moves, perform: { value in
+                    checkForWinner()
+                })
     }
     private func checkForWinner(){
         if moves[0] != "" && moves[0] == moves[1] && moves[1] == moves[2] {
